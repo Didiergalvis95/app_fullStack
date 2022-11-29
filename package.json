@@ -16,5 +16,8 @@
     "back"
   ],
   "author": "Didier Alexander Galvis Galvis",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
