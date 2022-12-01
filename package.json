@@ -19,6 +19,9 @@
   "author": "Didier Alexander Galvis Galvis",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.26.0"
   }
 }
