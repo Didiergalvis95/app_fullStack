@@ -4,7 +4,7 @@ const crearProducto = async(req, res) => {
     try {
         Producto.create(req.body)
         res.json({
-            message: 'Usuario creado correctamente'
+            message: 'Producto creado correctamente'
         })
     } catch (error) {
         res.json({
@@ -13,20 +13,52 @@ const crearProducto = async(req, res) => {
     }
 }
 
-const listarProductos = () => {
+const listarProductos = async(req, res) => {
     
 }
 
-const listarProducto = () => {
+const listarProducto = async(req, res) => {
+    const productoId = req.params.id;
+    Producto.findById(productoId).exec((error, nota) =>{
+        if(error) return res.status(500).send({
+            message: 'Error al listar productos'
+        })
+        if(Producto){
+            return res.status(200).sed({
+                Producto
+            })
+        }else{
+            return res.status(404).send({
+                message: 'No hay productos'
+            })
+        }
+    })
+}
+
+const edtitarProducto = async(req, res) => {
     
 }
 
-const edtitarProducto = () => {
-    
-}
+const eliminarProducto = async(req, res) => {
+    var productoId = req.params.id;
+ 
+        // Buscamos por ID, eliminamos el objeto y devolvemos el objeto borrado en un JSON
+    Producto.findByIdAndRemove(productoId, (error, productoRemoved) => {
+        if(error) return res.status(500).send({ 
+            message: 'Error al buscar productos' 
+        });
+         
+            if(frutaRemoved){
+                return res.status(200).send({
+                    Producto: productoRemoved
+                });
+            }else{
+                return res.status(404).send({
+                    message: 'No existe el producto'
+                });
+            }
+    });
 
-const eliminarProducto = () => {
-    
 }
 
 export {

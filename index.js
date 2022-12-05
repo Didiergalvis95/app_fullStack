@@ -1,4 +1,3 @@
-// const express = require('express');
 import express from 'express';
 import { dataBase } from './database/conexionDatabase.js';
 import { productoRouter } from './routes/ProductoRout.js';
@@ -14,7 +13,6 @@ try {
 } catch (error) {
     console.log(error);
 }
-
 
 app.listen(3200, ()=>{
     console.log('Servidor corriendo en el puerto 3200');

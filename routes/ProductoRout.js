@@ -5,6 +5,8 @@ const productoRouter = express.Router();
 
 productoRouter.post('/', crearProducto)
 
+
+
 export {
     productoRouter
 }
