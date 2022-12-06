@@ -2,7 +2,7 @@ import { Producto } from "../models/ProductoModel.js"
 
 const crearProducto = async(req, res) => {
     try {
-        Producto.create(req.body)
+        await Producto.create(req.body)
         res.json({
             message: 'Producto creado correctamente'
         })
@@ -11,6 +11,16 @@ const crearProducto = async(req, res) => {
             message: `No se pudo registrar ${error}`
         })
     }
+    /* const producto = await Producto.create(req.body)
+    if(producto){
+        await Producto.create(req.body)
+        res.json({
+            message: 'Producto creado correctamente'
+    }else{
+        res.json({
+            message: `No se pudo registrar ${error}`
+        })
+    } */
 }
 
 const listarProductos = async(req, res) => {

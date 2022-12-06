@@ -6,7 +6,9 @@ import { productoRouter } from './routes/ProductoRout.js';
 const app = express();
 const port = 3200;
 
-app.use('/producto', productoRouter)
+app.use(express.json())
+
+app.use('/productos', productoRouter)
 // Validacion de conexion a la base de datos
 try {
     await dataBase.authenticate()
