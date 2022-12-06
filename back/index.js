@@ -2,19 +2,20 @@ import express from 'express';
 import { dataBase } from './database/conexionDatabase.js';
 import { productoRouter } from './routes/ProductoRout.js';
 
-
+// Instancia de express y apertura del puerto
 const app = express();
+const port = 3200;
 
 app.use('/producto', productoRouter)
-
+// Validacion de conexion a la base de datos
 try {
     await dataBase.authenticate()
     console.log('conexion exitosa');
 } catch (error) {
-    console.log(error);
+    console.log(`Conexion no exitosa: ${error}`);
 }
-
-app.listen(3200, ()=>{
-    console.log('Servidor corriendo en el puerto 3200');
+// Ejecucion del servidor
+app.listen(port, ()=>{
+    console.log(`Servidor corriendo en el puerto ${port}`);
     console.log('http://localhost:3200');
 })
