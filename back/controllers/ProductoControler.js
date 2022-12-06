@@ -24,29 +24,33 @@ const crearProducto = async(req, res) => {
 }
 
 const listarProductos = async(req, res) => {
-    
+    try{
+        const productos = await Producto.findAll()
+        res.json(productos)
+    }catch(error){
+        res.json({
+            message: "Base de datos vacia"
+        })
+    }
 }
 
 const listarProducto = async(req, res) => {
-    const productoId = req.params.id;
-    Producto.findById(productoId).exec((error, nota) =>{
-        if(error) return res.status(500).send({
-            message: 'Error al listar productos'
+    try{
+        const producto = await Producto.findOne({where: {id: req.params.id}})
+        res.json(producto)
+    }catch(error){
+        res.json({
+            message: `No se encontro el producto ${error}`
         })
-        if(Producto){
-            return res.status(200).sed({
-                Producto
-            })
-        }else{
-            return res.status(404).send({
-                message: 'No hay productos'
-            })
-        }
-    })
+    }
 }
 
-const edtitarProducto = async(req, res) => {
-    
+const editarProducto = async(req, res) => {
+    try{
+
+    }catch(error){
+
+    }
 }
 
 const eliminarProducto = async(req, res) => {
@@ -75,6 +79,6 @@ export {
     crearProducto,
     listarProductos,
     listarProducto,
-    edtitarProducto,
+    editarProducto,
     eliminarProducto
 }
